@@ -41,6 +41,14 @@ function captureUserInput(){
         console.log(event.key); 
         userGuess = event.key; 
         recordGuesses(); //everytime key is pressed record the guess
+
+        if(userGuess !== undefined){ // is guess defined, is guess right/wrong
+            if( isGuessCorrect() ){
+                revealLetter();
+            } else{
+                wrongGuess();
+            }
+        }
     }
 }
 
@@ -83,6 +91,14 @@ function recordGuesses(){
     console.log("recordGuesses " + guessedLetters);
 }
 
+function guessedBefore( guess ){
+    if(guessedLetters.indexOf(guess) === -1){
+        return false;
+    }else{
+        return true;
+    }
+}
+
 function isLetter( string ){
     return (/[a-zA-Z]/.test(string) && string.length === 1 );
 }
@@ -95,14 +111,6 @@ window.onload = function(){
     randomWord();
     createBlanks();
 
-    captureUserInput();
-
-    if(userGuess !== undefined){
-        if( isGuessCorrect() ){
-            revealLetter();
-        } else{
-            wrongGuess();
-        }
-    }
+    captureUserInput();  
 
 };
