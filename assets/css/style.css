@@ -1,1 +1,13 @@
 #play-again{ display:none; }
+#notification{
+    font-size:30px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+#word,
+#guessed{
+    font-size: 30px;
+    display: block;
+    margin: 20px 0;
+}

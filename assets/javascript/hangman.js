@@ -26,6 +26,7 @@ var guessesLeft;
 var guessedLetters = [];
 var letterReveal = []; //shows blanks and revealed letters
 var correctIndex = [];
+var wins=0;
 
 //FUNCTIONS
 function initialize(){
@@ -38,6 +39,7 @@ function initialize(){
     document.getElementById("guessed").innerHTML = "";
     document.getElementById("notification").innerHTML = "";
     document.getElementById("play-again").style.display = "none";
+    document.getElementById("hangman").innerHTML = hangmanStages[7];
 
     randomWord();
     createBlanks();
@@ -78,6 +80,7 @@ function captureUserInput(){
 
 function winner(){
     wins++;
+    document.getElementById("wins").innerHTML = wins;
     document.getElementById("notification").innerHTML = "WINNER!";
     document.getElementById("play-again").style.display = "block";
 }
@@ -147,6 +150,7 @@ function wrongGuess(){
     guessesLeft--;
     document.getElementById("guesses-left").innerHTML = guessesLeft;
     //Add to hangman
+    document.getElementById("hangman").innerHTML = hangmanStages[guessesLeft];
 }
 
 function createBlanks(){
@@ -197,3 +201,39 @@ window.onload = function(){
     captureUserInput();  
 
 };
+
+/*HANDMAN STAGES*/
+var hangmanStages = [
+    
+    "_____<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/|\\<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ \\<br />_|_<br />|&nbsp;&nbsp;&nbsp;&nbsp;|________<br />|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|__________|</p>"
+    
+    ,
+    
+    "_____<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/|\\<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ <br />_|_<br />|&nbsp;&nbsp;&nbsp;&nbsp;|________<br />|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|__________|</p>"
+    
+    ,
+    
+    "_____<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/|\\<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />_|_<br />|&nbsp;&nbsp;&nbsp;&nbsp;|________<br />|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|__________|</p>"
+    
+    ,
+    
+    "_____<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/|\\<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />_|_<br />|&nbsp;&nbsp;&nbsp;&nbsp;|________<br />|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|__________|</p>"
+    
+    ,
+    
+    "_____<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/|\<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />_|_<br />|&nbsp;&nbsp;&nbsp;&nbsp;|________<br />|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|__________|</p>"
+    
+    ,
+    
+    "_____<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />_|_<br />|&nbsp;&nbsp;&nbsp;&nbsp;|________<br />|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|__________|</p>"
+    
+    ,
+    
+    "_____<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />_|_<br />|&nbsp;&nbsp;&nbsp;&nbsp;|________<br />|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|__________|</p>"
+    
+    ,
+    
+    "_____<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />_|_<br />|&nbsp;&nbsp;&nbsp;&nbsp;|________<br />|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|__________|</p>"
+    
+    ];
+
